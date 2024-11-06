@@ -1,0 +1,36 @@
+
+{% extends 'Navbar/ProjectNavbar.html' %}
+{% load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+    <div class="container">
+  <div class="row">
+    <div class="col align-self-start">
+      Write here
+        <br>
+         <form method="post" action="{% url 'printpagelogic' %}">
+             {% csrf_token %}
+             <label>
+                 Enter Text:
+             </label>
+             <input type ="text" name="user_input" required>
+             <button type="Submit">Submit</button>
+         </form>
+    </div>
+    <div class="col align-self-center">
+      It will print here
+        <h1>
+            {{ user_input }}
+        </h1>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>

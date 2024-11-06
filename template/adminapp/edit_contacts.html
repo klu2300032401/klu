@@ -1,0 +1,29 @@
+{% extends 'Navbar/ProjectNavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Contact</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+{% block body %}
+
+<div class="container mt-5">
+    <h1>Edit Contact</h1>
+    <form method="post" action="{% url 'edit_contact' contact.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="text-center mt-4">
+    <a href="{% url 'contact_list' %}" class="btn btn-secondary btn-sm">Back to Contact List</a>
+</div>
+        <div class="d-grid gap-2 col-6 mx-auto mt-3">
+            <button class="btn btn-primary" type="submit">Update Contact</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+</body>
+</html>

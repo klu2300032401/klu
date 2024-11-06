@@ -1,0 +1,39 @@
+{% extends 'Navbar/Projectnavbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DateTime Module Example</title>
+</head>
+<body>
+{% block body %}
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+            <h1>DateTime Module Example</h1>
+            <div>
+                <form method="post" action="{% url 'datetimepagelogic' %}">
+                    {% csrf_token %}
+                    <label>Enter a Number:</label>
+                    <input type="text" name="date1" required>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="col">
+            <strong>Output will be displayed here:</strong>
+            {% if ran %}
+            <h1>
+                From today, {{ number1 }} days later, the date will be {{ ran|date:"F j, Y" }}.
+                <br>
+                The year {{ ran1 }} is {{ ran3 }}.
+            </h1>
+            {% elif error %}
+            <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>
